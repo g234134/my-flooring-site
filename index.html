@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>匠心木境 | 打造家的溫度</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital@1&family=Noto+Serif+TC:wght@400;700&display=swap');
+        
+        body { font-family: 'Noto Serif TC', serif; color: #3d3d3d; scroll-behavior: smooth; }
+        .accent-font { font-family: 'Bodoni+Moda', serif; font-style: italic; }
+        
+        /* 玻璃擬態導覽列 */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        /* 增加質感漸層 */
+        .wood-overlay {
+            background: linear-gradient(75deg, rgba(45, 34, 25, 0.8) 0%, rgba(45, 34, 25, 0) 60%);
+        }
+    </style>
+</head>
+<body class="bg-[#F9F7F2]">
+
+    <nav class="glass-nav fixed w-full z-50 px-8 py-4 flex justify-between items-center transition-all">
+        <div class="text-xl font-bold tracking-[0.3em] text-[#5D4037]">WOOD STUDIO</div>
+        <div class="hidden md:flex space-x-12 text-sm tracking-widest text-gray-600">
+            <a href="#" class="hover:text-[#8D6E63] transition">案例研究</a>
+            <a href="#" class="hover:text-[#8D6E63] transition">工藝細節</a>
+            <a href="#" class="hover:text-[#8D6E63] transition">預約丈量</a>
+        </div>
+    </nav>
+
+    <section class="relative h-screen flex items-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=2070" class="w-full h-full object-cover" alt="Wood Floor">
+            <div class="absolute inset-0 wood-overlay"></div>
+        </div>
+        
+        <div class="relative z-10 container mx-auto px-10 text-white" data-aos="fade-right">
+            <span class="accent-font text-3xl text-[#D7CCC8] mb-4 block">Selection of Texture</span>
+            <h1 class="text-6xl md:text-8xl font-bold leading-tight mb-8">赤足<br><span class="pl-20">最懂的溫度</span></h1>
+            <div class="h-[1px] w-40 bg-[#D7CCC8] mb-8"></div>
+            <p class="text-lg tracking-widest max-w-md text-gray-200">參考 100 室內設計專業工法，為您精挑細選最適合台灣氣候的木質方案。</p>
+        </div>
+    </section>
+
+    <section class="py-32 container mx-auto px-10">
+        <div class="flex flex-col md:flex-row items-center gap-20">
+            <div class="w-full md:w-1/2 relative" data-aos="zoom-in">
+                <div class="absolute -top-10 -left-10 w-40 h-40 bg-[#EFEBE9] -z-10"></div>
+                <img src="https://images.unsplash.com/photo-1556020685-ae41abfc9365?q=80&w=1974" class="shadow-2xl grayscale-[20%] hover:grayscale-0 transition duration-700">
+            </div>
+            <div class="w-full md:w-1/2" data-aos="fade-left">
+                <h2 class="text-4xl font-bold mb-6 text-[#4E342E]">不只是地板，<br>是空間的底蘊。</h2>
+                <p class="text-gray-600 leading-loose mb-10">
+                    每一塊木頭都有它的靈魂。我們透過精密的含水率控制與人字拼貼工法，讓地板在展現美感的同時，更能經受時間的洗禮。
+                </p>
+                <button class="px-10 py-4 border border-[#4E342E] hover:bg-[#4E342E] hover:text-white transition-all duration-300 tracking-widest">探索工藝</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[#F5F5F5] py-32">
+        <div class="container mx-auto px-10">
+            <div class="flex justify-between items-end mb-20">
+                <h3 class="text-3xl font-bold">系列選品</h3>
+                <span class="accent-font text-xl">01 / Featured</span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white group overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-96 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1505691938895-1758d7eaa511?q=80&w=2070" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
+                        <div class="absolute bottom-0 left-0 bg-white px-6 py-2 text-xs tracking-tighter">New Arrival</div>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-xl font-bold mb-2">斯堪地那維亞橡木</h4>
+                        <p class="text-gray-400 text-sm">淺色系、自然節點、北歐簡約</p>
+                    </div>
+                </div>
+                <div class="bg-white group overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-96 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1622397333309-3056049aa9bb?q=80&w=1974" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-xl font-bold mb-2">北美黑胡桃實木</h4>
+                        <p class="text-gray-400 text-sm">沉穩色調、細緻紋理、大氣雅致</p>
+                    </div>
+                </div>
+                <div class="bg-white group overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-96 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?q=80&w=2070" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-xl font-bold mb-2">經典人字拼系列</h4>
+                        <p class="text-gray-400 text-sm">幾何美學、層次豐富、空間焦點</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: true });
+    </script>
+</body>
+</html>
