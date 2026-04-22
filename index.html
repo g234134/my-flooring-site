@@ -3,87 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WS.STUDIO | 木質美學新定義</title>
+    <title>WOODSCAPE | 匠心木境 5.0</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,400;1,700&family=Noto+Serif+TC:wght@300;400;700&display=swap');
-        
-        :root { --main-bg: #F2EFE9; --text-dark: #1C1C1C; --accent: #8B735B; }
-        body { font-family: 'Noto Serif TC', serif; background-color: var(--main-bg); color: var(--text-dark); overflow-x: hidden; }
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,700&family=Noto+Serif+TC:wght@200;400;700&display=swap');
+        :root { --bg: #F0EDE8; --dark: #1A1A1A; --accent: #8C7355; }
+        body { font-family: 'Noto Serif TC', serif; background-color: var(--bg); color: var(--dark); }
         .accent-font { font-family: 'Bodoni Moda', serif; }
         
-        /* 抄襲 Apple 的平滑滾動 */
-        html { scroll-behavior: smooth; }
+        /* 100設計美學：錯位陰影與框線 */
+        .photo-frame { position: relative; }
+        .photo-frame::after { content: ''; position: absolute; top: 20px; left: 20px; width: 100%; height: 100%; border: 1px solid var(--dark); opacity: 0.1; z-index: -1; }
         
-        /* 抄襲 100 設計的錯位裝飾 */
-        .deco-line { width: 1px; height: 100px; background: var(--text-dark); opacity: 0.2; margin: 0 auto; }
-        
-        /* 圖片高級感：呼吸縮放 */
-        .img-container { overflow: hidden; position: relative; }
-        .img-container img { transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1); }
-        .img-container:hover img { transform: scale(1.05); }
+        /* 高級動效：平滑遮罩開啟 */
+        .reveal-mask { clip-path: inset(0 100% 0 0); transition: clip-path 1.5s cubic-bezier(0.19, 1, 0.22, 1); }
+        .aos-animate .reveal-mask { clip-path: inset(0 0 0 0); }
     </style>
 </head>
-<body>
+<body class="overflow-x-hidden">
     <div id="app">
         <nav class="fixed top-0 w-full z-50 px-12 py-10 flex justify-between items-center mix-blend-difference text-white">
-            <div class="text-2xl font-bold tracking-[0.4em] accent-font italic">WS.</div>
-            <div class="hidden md:flex space-x-16 text-[10px] tracking-[0.3em] font-light">
-                <a href="#" class="hover:opacity-50 transition">CURATION</a>
-                <a href="#" class="hover:opacity-50 transition">TEXTURE</a>
-                <a href="#" @click="isCartOpen = true">WISHLIST [{{cart.length}}]</a>
+            <div class="text-2xl font-bold tracking-[0.5em] accent-font italic">WS.</div>
+            <div class="space-x-12 text-[10px] tracking-[0.4em] font-light uppercase">
+                <a href="#about" class="hover:opacity-40 transition">The Story</a>
+                <a href="#gallery" class="hover:opacity-40 transition">Curation</a>
+                <a href="#" @click="isCartOpen = true" class="bg-white text-black px-4 py-2">Wishlist [{{cart.length}}]</a>
             </div>
         </nav>
 
-        <section class="h-screen flex flex-col justify-center items-center relative px-10">
-            <div class="absolute right-0 top-0 w-1/3 h-full bg-[#E5E0D8] -z-10" data-aos="fade-left" data-aos-delay="500"></div>
-            <div class="text-center z-10" data-aos="fade-up">
-                <span class="accent-font italic text-2xl text-stone-400 block mb-6">The Art of Flooring.</span>
-                <h1 class="text-6xl md:text-[10rem] font-bold leading-none tracking-tighter">匠心<br><span class="md:pl-48">之木</span></h1>
-                <p class="mt-12 text-xs tracking-[0.5em] uppercase opacity-50">Curated by WS.STUDIO 2026</p>
+        <section class="h-screen relative flex items-center justify-center">
+            <div class="absolute left-0 w-1/2 h-full bg-[#E5E1D8] -z-10" data-aos="fade-right"></div>
+            <div class="text-center" data-aos="zoom-in" data-aos-duration="2000">
+                <span class="accent-font italic text-3xl text-stone-400 block mb-8">Evolution of Space.</span>
+                <h1 class="text-7xl md:text-[12rem] font-bold leading-none tracking-tighter">木境<br><span class="md:pl-64 italic accent-font">REDEFINED</span></h1>
             </div>
-            <div class="absolute bottom-10 deco-line"></div>
         </section>
 
-        <section class="py-40 container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-                <div class="md:col-span-7 img-container" data-aos="fade-right">
-                    <img src="https://images.unsplash.com/photo-1556020685-ae41abfc9365?q=80&w=1974" class="w-full h-[700px] object-cover">
-                    <div class="absolute bottom-8 left-8 text-white p-6 backdrop-blur-sm bg-black/10">
-                        <p class="accent-font italic text-lg">01. Oak Essence</p>
-                        <h3 class="text-3xl font-bold mt-2">北美紅橡木</h3>
-                        <button @click="addToCart('北美紅橡木')" class="mt-4 text-xs tracking-widest border-b border-white pb-2">ADD TO WISHLIST</button>
+        <section id="about" class="py-40 container mx-auto px-10">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-20 items-center">
+                <div class="md:col-span-6 photo-frame" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1581850518616-0819c3a242c7?q=80&w=1200" class="w-full h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-1000">
+                </div>
+                <div class="md:col-span-5 md:col-start-8" data-aos="fade-left">
+                    <h2 class="text-5xl font-light mb-10 leading-tight">不只是複製品，<br>是關於『質地』的辯證。</h2>
+                    <p class="text-stone-500 leading-loose text-sm tracking-widest mb-10">
+                        我們讓 Agent 深入學習了超過 500 個高端室內設計案例。這一次，我們不再只是抄襲外殼，我們學會了如何利用空間的「呼吸」來突顯木材的天然紋理。
+                    </p>
+                    <div class="h-[1px] w-full bg-stone-300 mb-10"></div>
+                    <span class="accent-font italic text-4xl opacity-20">01 / Aesthetic</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="bg-white py-40">
+            <div class="container mx-auto px-10">
+                <div class="mb-32 flex justify-between items-end">
+                    <h2 class="text-6xl font-bold accent-font italic">Curation.</h2>
+                    <p class="text-xs tracking-[0.5em] text-stone-400">SELECT YOUR TEXTURE</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+                    <div v-for="(p, idx) in products" :key="idx" 
+                         class="group cursor-pointer" 
+                         :class="idx === 1 ? 'md:mt-24' : ''"
+                         data-aos="fade-up" :data-aos-delay="idx * 100">
+                        <div class="reveal-box overflow-hidden mb-6">
+                            <img :src="p.img" class="w-full h-[500px] object-cover group-hover:scale-110 transition duration-1000">
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="text-xl font-bold">{{ p.name }}</h4>
+                                <p class="text-xs text-stone-400 mt-1 uppercase tracking-widest">{{ p.type }}</p>
+                            </div>
+                            <button @click="addToCart(p.name)" class="w-10 h-10 border border-stone-200 rounded-full hover:bg-black hover:text-white transition flex items-center justify-center">+</button>
+                        </div>
                     </div>
                 </div>
-
-                <div class="md:col-span-5 md:pl-10" data-aos="fade-left">
-                    <h2 class="text-4xl font-light leading-tight mb-8 text-stone-600">赤足的觸感，<br>是家最誠實的記憶。</h2>
-                    <p class="text-stone-400 text-sm leading-loose tracking-widest mb-12">
-                        我們從 100 種木材中篩選出最適合亞洲氣候的 5 種方案。不只是外觀的抄襲，更是在細節上對「溫潤度」的極致追求。
-                    </p>
-                    <div class="h-[1px] w-40 bg-stone-300"></div>
-                </div>
             </div>
         </section>
 
-        <section class="relative h-[80vh] flex items-center justify-center overflow-hidden">
-            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1622397333309-3056049aa9bb?q=80&w=2000')] bg-cover bg-fixed bg-center brightness-75"></div>
-            <div class="relative z-10 text-center text-white p-20 border border-white/20 backdrop-blur-md" data-aos="zoom-in">
-                <h2 class="text-5xl font-bold mb-8">質感，源於看不見的細節。</h2>
-                <p class="tracking-[0.4em] font-light opacity-80">EXPERIENCE THE TEXTURE OF LIFE</p>
-            </div>
-        </section>
-
-        <div v-if="isCartOpen" class="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm" @click="isCartOpen = false"></div>
-        <aside :class="['fixed right-0 top-0 h-full w-full md:w-[450px] bg-white z-[70] shadow-2xl p-20 transform transition-transform duration-1000 cubic-bezier(0.16, 1, 0.3, 1)', isCartOpen ? 'translate-x-0' : 'translate-x-full']">
-            <h2 class="text-5xl font-bold accent-font italic mb-16">Selection.</h2>
-            <div v-if="cart.length === 0" class="text-stone-300">Your wishlist is currently empty.</div>
-            <div v-for="(item, index) in cart" :key="index" class="py-6 border-b border-stone-100 flex justify-between items-center">
-                <span class="tracking-widest">{{ item }}</span>
-                <button @click="cart.splice(index, 1)" class="text-xs text-stone-400 hover:text-black">REMOVE</button>
-            </div>
+        <aside :class="['fixed right-0 top-0 h-full w-full md:w-[500px] bg-[#F9F9F9] z-[70] p-20 transform transition-transform duration-1000 cubic-bezier(0.19, 1, 0.22, 1)', isCartOpen ? 'translate-x-0' : 'translate-x-full']">
+            <h2 class="text-6xl font-bold accent-font italic mb-20">Cart.</h2>
+            <div v-for="item in cart" class="py-6 border-b border-stone-200 tracking-widest">{{ item }}</div>
+            <button class="mt-20 w-full py-6 bg-black text-white uppercase tracking-widest text-xs hover:bg-stone-800" @click="isCartOpen = false">Close</button>
         </aside>
     </div>
 
@@ -94,14 +98,16 @@
             setup() {
                 const isCartOpen = ref(false);
                 const cart = ref([]);
-                const addToCart = (p) => { 
-                    if(!cart.value.includes(p)) cart.value.push(p); 
-                    isCartOpen.value = true; 
-                };
-                return { isCartOpen, cart, addToCart };
+                const products = ref([
+                    { name: '冰島白橡', type: 'Hardwood', img: 'https://images.unsplash.com/photo-1556020685-ae41abfc9365?q=80&w=1000' },
+                    { name: '煙燻黑胡桃', type: 'Engineered', img: 'https://images.unsplash.com/photo-1505691938895-1758d7eaa511?q=80&w=1000' },
+                    { name: '經典維也納', type: 'Herringbone', img: 'https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?q=80&w=1000' }
+                ]);
+                const addToCart = (n) => { cart.value.push(n); isCartOpen.value = true; };
+                return { isCartOpen, cart, products, addToCart };
             }
         }).mount('#app');
-        AOS.init({ duration: 1500, once: false });
+        AOS.init({ duration: 1500 });
     </script>
 </body>
 </html>
