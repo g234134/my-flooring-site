@@ -3,91 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WOODSCAPE | 融合美學</title>
+    <title>WS.STUDIO | 木質美學新定義</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,700&family=Noto+Serif+TC:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,400;1,700&family=Noto+Serif+TC:wght@300;400;700&display=swap');
         
-        :root { --accent: #8D6E63; --bg: #F5F2EE; }
-        body { font-family: 'Noto Serif TC', serif; background-color: var(--bg); color: #2c2c2c; }
+        :root { --main-bg: #F2EFE9; --text-dark: #1C1C1C; --accent: #8B735B; }
+        body { font-family: 'Noto Serif TC', serif; background-color: var(--main-bg); color: var(--text-dark); overflow-x: hidden; }
         .accent-font { font-family: 'Bodoni Moda', serif; }
         
-        /* 融合美學 1：側邊垂直標題 (抄自高級雜誌) */
-        .vertical-text { writing-mode: vertical-rl; text-orientation: mixed; }
+        /* 抄襲 Apple 的平滑滾動 */
+        html { scroll-behavior: smooth; }
         
-        /* 融合美學 2：圖片懸浮拉伸感 */
-        .reveal-box { position: relative; overflow: hidden; }
-        .reveal-box img { transform: scale(1.1); transition: 1.5s cubic-bezier(0.2, 1, 0.3, 1); }
-        .reveal-box:hover img { transform: scale(1); }
+        /* 抄襲 100 設計的錯位裝飾 */
+        .deco-line { width: 1px; height: 100px; background: var(--text-dark); opacity: 0.2; margin: 0 auto; }
+        
+        /* 圖片高級感：呼吸縮放 */
+        .img-container { overflow: hidden; position: relative; }
+        .img-container img { transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .img-container:hover img { transform: scale(1.05); }
     </style>
 </head>
 <body>
     <div id="app">
-        <nav class="fixed top-0 w-full z-50 px-10 py-6 flex justify-between items-center mix-blend-difference text-white">
-            <div class="text-xl font-bold tracking-[0.5em]">WS.STUDIO</div>
-            <div class="flex space-x-8 text-[10px] tracking-widest">
-                <a href="#" class="hover:line-through">INDEX</a>
-                <a href="#" class="hover:line-through">PHILOSOPHY</a>
+        <nav class="fixed top-0 w-full z-50 px-12 py-10 flex justify-between items-center mix-blend-difference text-white">
+            <div class="text-2xl font-bold tracking-[0.4em] accent-font italic">WS.</div>
+            <div class="hidden md:flex space-x-16 text-[10px] tracking-[0.3em] font-light">
+                <a href="#" class="hover:opacity-50 transition">CURATION</a>
+                <a href="#" class="hover:opacity-50 transition">TEXTURE</a>
                 <a href="#" @click="isCartOpen = true">WISHLIST [{{cart.length}}]</a>
             </div>
         </nav>
 
-        <section class="h-screen relative flex items-center px-10 md:px-20">
-            <div class="w-full md:w-2/3" data-aos="fade-right">
-                <h1 class="text-7xl md:text-[10rem] leading-none font-bold accent-font italic mb-6">Nature's</h1>
-                <h1 class="text-7xl md:text-[8rem] leading-none font-bold pl-20 md:pl-40 -mt-10">Whisper.</h1>
-                <p class="mt-12 text-sm tracking-[0.4em] opacity-60">源自林間的低語，為您的空間鋪設詩意。</p>
+        <section class="h-screen flex flex-col justify-center items-center relative px-10">
+            <div class="absolute right-0 top-0 w-1/3 h-full bg-[#E5E0D8] -z-10" data-aos="fade-left" data-aos-delay="500"></div>
+            <div class="text-center z-10" data-aos="fade-up">
+                <span class="accent-font italic text-2xl text-stone-400 block mb-6">The Art of Flooring.</span>
+                <h1 class="text-6xl md:text-[10rem] font-bold leading-none tracking-tighter">匠心<br><span class="md:pl-48">之木</span></h1>
+                <p class="mt-12 text-xs tracking-[0.5em] uppercase opacity-50">Curated by WS.STUDIO 2026</p>
             </div>
-            <div class="absolute right-0 top-0 w-1/3 h-full overflow-hidden hidden md:block" data-aos="fade-left">
-                <img src="https://images.unsplash.com/photo-1549187771-b4e9f0445b41?q=80&w=1974" class="w-full h-full object-cover">
-            </div>
+            <div class="absolute bottom-10 deco-line"></div>
         </section>
 
-        <section class="py-40">
-            <div class="container mx-auto px-10 grid grid-cols-12 gap-4">
-                <div class="col-span-12 md:col-span-8 reveal-box h-[500px]" data-aos="zoom-in">
-                    <img src="https://images.unsplash.com/photo-1556020685-ae41abfc9365?q=80&w=1974" class="w-full h-full object-cover">
-                    <div class="absolute top-10 left-10 text-white bg-black/20 p-4 backdrop-blur-sm">
-                        <p class="text-xs tracking-widest">COLLECTION 01</p>
-                        <h2 class="text-2xl mt-2 italic accent-font">Oceanic Oak</h2>
+        <section class="py-40 container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-7 img-container" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1556020685-ae41abfc9365?q=80&w=1974" class="w-full h-[700px] object-cover">
+                    <div class="absolute bottom-8 left-8 text-white p-6 backdrop-blur-sm bg-black/10">
+                        <p class="accent-font italic text-lg">01. Oak Essence</p>
+                        <h3 class="text-3xl font-bold mt-2">北美紅橡木</h3>
+                        <button @click="addToCart('北美紅橡木')" class="mt-4 text-xs tracking-widest border-b border-white pb-2">ADD TO WISHLIST</button>
                     </div>
                 </div>
-                
-                <div class="col-span-12 md:col-span-4 flex flex-col justify-end p-10 bg-white" data-aos="fade-up">
-                    <h3 class="text-2xl font-bold mb-4">海島型工藝</h3>
-                    <p class="text-gray-400 text-sm leading-loose mb-10">針對台灣潮濕環境設計，多層結構交叉疊合，有效抑制木材伸縮膨脹。</p>
-                    <button @click="addToCart('海島型原木')" class="text-left font-bold border-b border-black w-max pb-2 hover:pl-4 transition-all">ADD TO LIST</button>
-                </div>
 
-                <div class="col-span-12 md:col-span-4 mt-20" data-aos="fade-right">
-                     <div class="vertical-text text-gray-300 text-6xl font-bold opacity-30 accent-font">AESTHETICS</div>
-                </div>
-
-                <div class="col-span-12 md:col-span-8 mt-20 reveal-box h-[400px]" data-aos="fade-left">
-                    <img src="https://images.unsplash.com/photo-1505691938895-1758d7eaa511?q=80&w=2070" class="w-full h-full object-cover">
+                <div class="md:col-span-5 md:pl-10" data-aos="fade-left">
+                    <h2 class="text-4xl font-light leading-tight mb-8 text-stone-600">赤足的觸感，<br>是家最誠實的記憶。</h2>
+                    <p class="text-stone-400 text-sm leading-loose tracking-widest mb-12">
+                        我們從 100 種木材中篩選出最適合亞洲氣候的 5 種方案。不只是外觀的抄襲，更是在細節上對「溫潤度」的極致追求。
+                    </p>
+                    <div class="h-[1px] w-40 bg-stone-300"></div>
                 </div>
             </div>
         </section>
 
-        <section class="bg-stone-900 text-white py-40 text-center">
-            <div class="max-w-2xl mx-auto px-10" data-aos="fade-up">
-                <span class="accent-font italic text-2xl text-stone-500 mb-8 block">Simplicity.</span>
-                <h2 class="text-4xl md:text-5xl font-light leading-snug mb-12">簡單，卻充滿力量。</h2>
-                <div class="h-[1px] w-20 bg-stone-700 mx-auto mb-12"></div>
-                <p class="text-gray-400 leading-relaxed tracking-widest">
-                    我們相信，地板是空間的底色。<br>
-                    一個好的底色，能承載所有的生活瑣碎，並將之轉化為美。
-                </p>
+        <section class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1622397333309-3056049aa9bb?q=80&w=2000')] bg-cover bg-fixed bg-center brightness-75"></div>
+            <div class="relative z-10 text-center text-white p-20 border border-white/20 backdrop-blur-md" data-aos="zoom-in">
+                <h2 class="text-5xl font-bold mb-8">質感，源於看不見的細節。</h2>
+                <p class="tracking-[0.4em] font-light opacity-80">EXPERIENCE THE TEXTURE OF LIFE</p>
             </div>
         </section>
 
-        <div v-if="isCartOpen" class="fixed inset-0 z-[70] bg-black/80 backdrop-blur-md" @click="isCartOpen = false"></div>
-        <aside :class="['fixed right-0 top-0 h-full w-full md:w-[400px] bg-white z-[80] p-20 transform transition-transform duration-700', isCartOpen ? 'translate-x-0' : 'translate-x-full']">
-             <h2 class="text-4xl font-bold accent-font italic mb-20">List.</h2>
-             <div v-if="cart.length === 0" class="text-gray-300">Empty</div>
-             <div v-for="item in cart" class="py-4 border-b text-sm tracking-widest">{{ item }}</div>
+        <div v-if="isCartOpen" class="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm" @click="isCartOpen = false"></div>
+        <aside :class="['fixed right-0 top-0 h-full w-full md:w-[450px] bg-white z-[70] shadow-2xl p-20 transform transition-transform duration-1000 cubic-bezier(0.16, 1, 0.3, 1)', isCartOpen ? 'translate-x-0' : 'translate-x-full']">
+            <h2 class="text-5xl font-bold accent-font italic mb-16">Selection.</h2>
+            <div v-if="cart.length === 0" class="text-stone-300">Your wishlist is currently empty.</div>
+            <div v-for="(item, index) in cart" :key="index" class="py-6 border-b border-stone-100 flex justify-between items-center">
+                <span class="tracking-widest">{{ item }}</span>
+                <button @click="cart.splice(index, 1)" class="text-xs text-stone-400 hover:text-black">REMOVE</button>
+            </div>
         </aside>
     </div>
 
@@ -98,11 +94,14 @@
             setup() {
                 const isCartOpen = ref(false);
                 const cart = ref([]);
-                const addToCart = (p) => { cart.value.push(p); isCartOpen.value = true; };
+                const addToCart = (p) => { 
+                    if(!cart.value.includes(p)) cart.value.push(p); 
+                    isCartOpen.value = true; 
+                };
                 return { isCartOpen, cart, addToCart };
             }
         }).mount('#app');
-        AOS.init({ duration: 2000, once: false });
+        AOS.init({ duration: 1500, once: false });
     </script>
 </body>
 </html>
