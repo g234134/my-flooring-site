@@ -3,82 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WS.STUDIO | 敘事建築與木質地景</title>
+    <title>WOODSCAPE | 木質美學與科普百科</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,700&family=Noto+Serif+TC:wght@200;400;700&display=swap');
-        :root { --bg: #F4F1EE; --dark: #1C1C1B; }
+        :root { --bg: #F2EFE9; --dark: #1C1C1B; --accent: #8B735B; }
         body { font-family: 'Noto Serif TC', serif; background-color: var(--bg); color: var(--dark); line-height: 1.8; }
         .accent-font { font-family: 'Bodoni Moda', serif; }
-        .letter-spacing-wide { letter-spacing: 0.3em; }
+        .wiki-card { background: white; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .wiki-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
     </style>
 </head>
 <body>
     <div id="app">
-        <nav class="fixed top-0 w-full z-50 px-12 py-10 flex justify-between items-center mix-blend-difference text-white">
+        <nav class="fixed top-0 w-full z-50 px-12 py-8 flex justify-between items-center mix-blend-difference text-white">
             <div class="text-2xl font-bold accent-font italic">WOODSCAPE.</div>
-            <div class="hidden md:flex space-x-12 text-[10px] letter-spacing-wide font-light uppercase">
-                <a href="#philosophy" class="hover:opacity-40 transition">敘事哲學</a>
+            <div class="hidden md:flex space-x-12 text-[10px] tracking-[0.3em] font-light uppercase">
+                <a href="#wiki" class="hover:opacity-40 transition">知識百科</a>
                 <a href="#collection" class="hover:opacity-40 transition">選品系列</a>
                 <a href="#" @click="isCartOpen = true">收藏清單 [{{cart.length}}]</a>
             </div>
         </nav>
 
-        <section class="h-screen flex items-center px-10 md:px-32 relative">
-            <div class="z-10" data-aos="fade-up">
-                <span class="accent-font italic text-3xl text-stone-400 block mb-4">Poetic Habitation.</span>
-                <h1 class="text-6xl md:text-8xl font-bold mb-10 leading-[1.1]">與自然，<br>達成一場溫柔的<span class="italic accent-font font-light">和解</span>。</h1>
-                <p class="max-w-md text-sm text-stone-500 tracking-widest leading-loose">
-                    我們在城市的喧囂中，為您帶回森林的低語。每一塊木頭都承載著數十年的日光與雨水，轉化為您腳下最堅實且溫潤的支撐。
-                </p>
-            </div>
-            <div class="absolute right-0 top-0 w-1/2 h-full bg-[url('https://images.unsplash.com/photo-1549187771-b4e9f0445b41?q=80&w=1500')] bg-cover grayscale opacity-20 -z-10"></div>
+        <section class="h-[70vh] flex flex-col justify-center items-center text-center px-10">
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 italic accent-font" data-aos="fade-up">Encyclopedia.</h1>
+            <p class="text-stone-400 tracking-[0.5em] uppercase text-xs" data-aos="fade-up" data-aos-delay="200">從森林到足尖的科學旅程</p>
         </section>
 
-        <section id="philosophy" class="py-40 bg-white">
-            <div class="container mx-auto px-10">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-32 items-center">
-                    <div data-aos="fade-right">
-                        <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=1200" class="shadow-2xl">
-                    </div>
-                    <div data-aos="fade-left">
-                        <span class="text-xs text-orange-800 font-bold letter-spacing-wide block mb-6">#材質修辭學</span>
-                        <h2 class="text-4xl font-bold mb-8 italic accent-font">The Texture of Silence.</h2>
-                        <p class="text-stone-600 mb-8">
-                            為什麼有些空間讓人感到平靜？關鍵在於地板的「視覺重力」。我們採用瑞典工藝的啞光塗裝技術，減少反光，讓光影在木頭孔隙間緩慢流動。這不是產品，這是關於靜謐的藝術。
-                        </p>
-                        <ul class="text-sm space-y-4 text-stone-500 italic">
-                            <li>— 精準 12% 低含水率，抗潮不變形</li>
-                            <li>— 48 小時職人手工養護</li>
-                            <li>— 低甲醛 F1 等級，守護呼吸的自由</li>
-                        </ul>
-                    </div>
+        <section id="wiki" class="py-32 container mx-auto px-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-stone-200 pb-10">
+                <div class="max-w-xl">
+                    <span class="text-xs text-stone-400 font-bold tracking-widest block mb-4 uppercase">#Knowledge Base</span>
+                    <h2 class="text-4xl font-bold mb-6">不只是挑美觀，<br>更是挑選「適合的結構」。</h2>
+                </div>
+                <p class="text-stone-500 text-sm italic accent-font">Education for Homeowners.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="wiki-card p-10 border border-stone-100" data-aos="fade-up">
+                    <div class="text-stone-200 text-6xl font-bold accent-font mb-8">01</div>
+                    <h3 class="text-2xl font-bold mb-6">結構分析：實木 vs 海島型</h3>
+                    <p class="text-stone-500 text-sm leading-loose mb-8">
+                        實木地板是一整塊木頭，足感最好但最怕潮濕膨脹。<strong>海島型地板</strong>則是「三明治結構」，底層使用十字堆疊的夾板，能抵銷木材的拉扯力，最適合台灣高溫多濕的環境。
+                    </p>
+                    <div class="text-xs font-bold border-b border-black w-max pb-1">LEARN MORE</div>
+                </div>
+
+                <div class="wiki-card p-10 border border-stone-100" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-stone-200 text-6xl font-bold accent-font mb-8">02</div>
+                    <h3 class="text-2xl font-bold mb-6">含水率的秘密</h3>
+                    <p class="text-stone-500 text-sm leading-loose mb-8">
+                        為什麼地板會發出怪聲？通常是因為施工時環境濕度與地板含水率未達平衡。專業施工會先將地板進場<strong>「養護 48 小時」</strong>，讓木纖維適應您的居家微氣候。
+                    </p>
+                    <div class="text-xs font-bold border-b border-black w-max pb-1">TECHNICAL SPECS</div>
+                </div>
+
+                <div class="wiki-card p-10 border border-stone-100" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-stone-200 text-6xl font-bold accent-font mb-8">03</div>
+                    <h3 class="text-2xl font-bold mb-6">耐磨等級評測</h3>
+                    <p class="text-stone-500 text-sm leading-loose mb-8">
+                        強化地板的耐磨係數以 AC 等級劃分。一般家庭建議 AC3，商用空間則需 AC4 以上。我們選用的系列皆通過 <strong>25,000 轉測試</strong>，連寵物的爪子也難以留下痕跡。
+                    </p>
+                    <div class="text-xs font-bold border-b border-black w-max pb-1">DURABILITY TEST</div>
                 </div>
             </div>
         </section>
 
-        <section id="collection" class="py-40">
-            <div class="container mx-auto px-10">
-                <div class="text-center mb-24" data-aos="fade-up">
-                    <h2 class="text-5xl font-bold mb-4 accent-font italic">Curated Series</h2>
-                    <p class="text-stone-400 tracking-[0.4em]">從原色到深邃，每一款都是一種情緒。</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                    <div v-for="p in products" class="group cursor-pointer" data-aos="fade-up">
-                        <div class="overflow-hidden mb-8 h-[400px]">
-                            <img :src="p.img" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
-                        </div>
-                        <h4 class="text-xl font-bold mb-2">{{ p.name }}</h4>
-                        <p class="text-xs text-stone-400 italic accent-font mb-6">{{ p.story }}</p>
-                        <button @click="addToCart(p.name)" class="px-8 py-2 border border-stone-300 text-xs hover:bg-black hover:text-white transition">選擇此氛圍</button>
-                    </div>
-                </div>
-            </div>
+        <section id="collection" class="bg-white py-32 px-10">
+             <div class="container mx-auto">
+                 <h2 class="text-3xl font-bold mb-20 accent-font italic text-center">Our Featured Collection.</h2>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+                     <div class="group overflow-hidden" data-aos="fade-right">
+                         <img src="https://images.unsplash.com/photo-1556020685-ae41abfc9365?q=80&w=1200" class="h-[500px] w-full object-cover group-hover:scale-105 transition duration-1000">
+                         <h4 class="text-xl font-bold mt-6">晨曦白橡 | 強化系列</h4>
+                         <p class="text-stone-400 text-sm mt-2">適合喜歡極簡北歐風的您，耐刮性能卓越。</p>
+                     </div>
+                     <div class="group overflow-hidden md:mt-20" data-aos="fade-left">
+                         <img src="https://images.unsplash.com/photo-1505691938895-1758d7eaa511?q=80&w=1200" class="h-[500px] w-full object-cover group-hover:scale-105 transition duration-1000">
+                         <h4 class="text-xl font-bold mt-6">煙燻胡桃 | 實木系列</h4>
+                         <p class="text-stone-400 text-sm mt-2">沈穩的色澤，為大坪數客廳注入尊榮感。</p>
+                     </div>
+                 </div>
+             </div>
         </section>
 
-        </div>
+        <footer class="bg-stone-900 text-stone-500 py-20 text-center text-xs tracking-widest uppercase">
+            &copy; 2026 WOODSCAPE. ALL RIGHTS RESERVED. <br>
+            專業木地板顧問服務 | 台北 . 台中 . 高雄
+        </footer>
+    </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -87,13 +102,8 @@
             setup() {
                 const isCartOpen = ref(false);
                 const cart = ref([]);
-                const products = ref([
-                    { name: '晨曦白橡', story: 'Like a morning breeze in Copenhagen.', img: 'https://images.unsplash.com/photo-1556020685-ae41abfc9365?q=80&w=1000' },
-                    { name: '靜謐黑胡桃', story: 'The soul of a midnight forest.', img: 'https://images.unsplash.com/photo-1505691938895-1758d7eaa511?q=80&w=1000' },
-                    { name: '古堡人字拼', story: 'History rewritten on your floor.', img: 'https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?q=80&w=1000' }
-                ]);
                 const addToCart = (n) => { cart.value.push(n); isCartOpen.value = true; };
-                return { isCartOpen, cart, products, addToCart };
+                return { isCartOpen, cart, addToCart };
             }
         }).mount('#app');
         AOS.init({ duration: 1500 });
